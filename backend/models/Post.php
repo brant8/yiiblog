@@ -19,64 +19,10 @@ use Yii;
  * @property Comment[] $comments
  * @property User $author
  */
-class Post extends \yii\db\ActiveRecord
+class Post extends \common\models\Post
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'post';
-    }
+	//reserved for future content
 
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['title', 'content', 'status', 'author_id'], 'required'],
-            [['content', 'tags'], 'string'],
-            [['status', 'create_time', 'update_time', 'author_id'], 'integer'],
-            [['title'], 'string', 'max' => 128],
-            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
-        ];
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'content' => Yii::t('app', 'Content'),
-            'tags' => Yii::t('app', 'Tags'),
-            'status' => Yii::t('app', 'Status'),
-            'create_time' => Yii::t('app', 'Create Time'),
-            'update_time' => Yii::t('app', 'Update Time'),
-            'author_id' => Yii::t('app', 'Author ID'),
-        ];
-    }
 
-    /**
-     * Gets query for [[Comments]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getComments()
-    {
-        return $this->hasMany(Comment::className(), ['post_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Author]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthor()
-    {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
-    }
 }
