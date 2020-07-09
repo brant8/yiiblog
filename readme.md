@@ -56,7 +56,7 @@
 	在`common\models\Post`添加`public function behaviors()`
 	[参考](https://blog.csdn.net/qq_26656329/article/details/51852157)
 
-
+###
 
 
 
