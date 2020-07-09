@@ -31,13 +31,13 @@
 	2.遇到`permission denied`问题后，查看本目录权限，用户组权限`chown`还有`chmod`，根据实际情况更改权限。
 	3.推送命令：
 
-	```
+```
 		git addd .
 		git commit -m "message"
 		git commit origin master
-	```
+```
 
-###1.遇见的问题
+### 1.遇见的问题
 
 	使用Gii在Backend生成Post,Comment等文件。Gii需要开启`AllowedIPs`
 	>Unable to write the file '/var/www/html/yiiblog/backend/models/User.php'.
@@ -47,13 +47,16 @@
 ###2.Backend,Frontend和Common的关系
 	
 	1.前后端都要使用的内容可以创造`model`在`common`命名空间下，然后使用继承方式在`Backend`下创建Post并更改为`extends common\models\Post`
+
 	[参考链接](https://getyii.com/topic/720)
+
 	2.为了减少代码视图，已有继承关系，把backend下`Post`内容全部`删除`。
 
 ###3.Post创建时间以及更新时间的插入
 
 	使用`behaviors(){}`内置方法来进行快速操作。
 	在`common\models\Post`添加`public function behaviors()`
+
 	[参考](https://blog.csdn.net/qq_26656329/article/details/51852157)
 
 ###
